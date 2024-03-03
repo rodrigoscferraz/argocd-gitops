@@ -1,0 +1,7 @@
+namespace: dbeaver
+
+resources:
+  - ingress.yaml
+  - pvc.yaml
+  - service.yaml
+  - statefulset.yaml
