@@ -18,7 +18,7 @@ spec:
           name: dbeaver
           namespace: dbeaver
           passHostHeader: true
-          port: client # [9]
+          port: 8978 # [9]
           responseForwarding:
             flushInterval: 1ms
           scheme: http
@@ -31,4 +31,4 @@ spec:
               sameSite: none
           strategy: RoundRobin
           weight: 10
-          nativeLB: true # [11]
+          # nativeLB: true # [11]
