@@ -33,7 +33,7 @@ spec:
       priority: 10 # [4]
       middlewares: # [5]
         - name: dbeaver-stripprefix # [6]
-          namespace: debeaver # [7]
+          namespace: dbeaver # [7]
       services: # [8]
         - kind: Service
           name: dbeaver
