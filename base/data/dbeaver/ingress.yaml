@@ -1,21 +1,55 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: dbeaver
+#   namespace: dbeaver
+#   annotations:
+#     ingress.kubernetes.io/ssl-redirect: "true"
+#     kubernetes.io/ingress.class: traefik
+#     traefik.ingress.kubernetes.io/router.entrypoints: web
+#     traefik.ingress.kubernetes.io/router.middlewares: debeaver-dbeaver-stripprefix@kubernetescrd
+# spec:
+#   rules:
+#     - http:
+#         paths:
+#           - path: /dbeaver
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: dbeaver
+#                 port:
+#                   name: client
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
   name: dbeaver
-  namespace: dbeaver
-  annotations:
-    ingress.kubernetes.io/ssl-redirect: "true"
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: web
-    traefik.ingress.kubernetes.io/router.middlewares: debeaver-dbeaver-stripprefix@kubernetescrd
+  namespace: debeaver
 spec:
-  rules:
-    - http:
-        paths:
-          - path: /dbeaver
-            pathType: Prefix
-            backend:
-              service:
-                name: dbeaver
-                port:
-                  name: client
+  entryPoints: # [1]
+    - web
+  routes: # [2]
+    - kind: Rule
+      match: Host(`localhost`) # [3]
+      priority: 10 # [4]
+      middlewares: # [5]
+        - name: dbeaver-stripprefix # [6]
+          namespace: debeaver # [7]
+      services: # [8]
+        - kind: Service
+          name: dbeaver
+          namespace: dbeaver
+          passHostHeader: true
+          port: client # [9]
+          responseForwarding:
+            flushInterval: 1ms
+          scheme: http
+          serversTransport: transport # [10]
+          sticky:
+            cookie:
+              httpOnly: true
+              name: cookie
+              secure: true
+              sameSite: none
+          strategy: RoundRobin
+          weight: 10
+          nativeLB: true # [11]
