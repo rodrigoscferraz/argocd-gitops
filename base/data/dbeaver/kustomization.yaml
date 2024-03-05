@@ -6,3 +6,4 @@ resources:
   - service.yaml
   - statefulset.yaml
   - ns.yaml
+  - middleware.yaml
