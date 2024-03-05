@@ -7,7 +7,7 @@ metadata:
     ingress.kubernetes.io/ssl-redirect: "true"
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web
-    traefik.ingress.kubernetes.io/router.middlewares: dbeaver-stripprefix
+    traefik.ingress.kubernetes.io/router.middlewares: debeaver-dbeaver-stripprefix@kubernetescrd
 spec:
   rules:
     - http:
