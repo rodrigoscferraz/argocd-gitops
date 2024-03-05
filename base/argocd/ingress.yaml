@@ -10,9 +10,9 @@ spec:
     - kind: Rule
       match: Host(`localhost`) && Path(`/argocd`) # [3]
       priority: 10 # [4]
-      middlewares: # [5]
-        - name: argocd-stripprefix # [6]
-          namespace: argocd # [7]
+      # middlewares: # [5]
+      #   - name: argocd-stripprefix # [6]
+      #     namespace: argocd # [7]
       services: # [8]
         - kind: Service
           name: argocd-server
