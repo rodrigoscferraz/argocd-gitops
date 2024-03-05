@@ -19,16 +19,7 @@ spec:
           namespace: dbeaver
           passHostHeader: true
           port: 8978 # [9]
-          responseForwarding:
-            flushInterval: 1ms
           scheme: http
-          serversTransport: transport # [10]
-          sticky:
-            cookie:
-              httpOnly: true
-              name: cookie
-              secure: true
-              sameSite: none
           strategy: RoundRobin
           weight: 10
           # nativeLB: true # [11]
