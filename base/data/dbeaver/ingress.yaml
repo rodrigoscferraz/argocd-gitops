@@ -26,7 +26,7 @@ metadata:
   namespace: dbeaver
 spec:
   entryPoints: # [1]
-    - web
+    - traefik
   routes: # [2]
     - kind: Rule
       match: Host(`localhost`) && Path(`/dbeaver`) # [3]
