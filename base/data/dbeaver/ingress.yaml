@@ -4,6 +4,9 @@ metadata:
   name: dbeaver
   annotations:
     ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: dbeaver-stripprefix@kubernatescrd
 spec:
   rules:
     - http:
