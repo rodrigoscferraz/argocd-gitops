@@ -8,7 +8,7 @@ spec:
     - web
   routes: # [2]
     - kind: Rule
-      match: Host(`localhost`) && Path(`/dbeaver`) # [3]
+      match: Host(`localhost`) && PathPrefix(`/dbeaver`) # [3]
       priority: 10 # [4]
       middlewares: # [5]
         - name: dbeaver-stripprefix # [6]
