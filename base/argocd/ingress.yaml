@@ -22,13 +22,13 @@ spec:
           responseForwarding:
             flushInterval: 1ms
           scheme: http
-          serversTransport: transport # [10]
-          sticky:
-            cookie:
-              httpOnly: true
-              name: cookie
-              secure: true
-              sameSite: none
-          strategy: RoundRobin
-          weight: 10
-          nativeLB: true # [11]
+          # serversTransport: transport # [10]
+          # sticky:
+          #   cookie:
+          #     httpOnly: true
+          #     name: cookie
+          #     secure: true
+          #     sameSite: none
+          # strategy: RoundRobin
+          # weight: 10
+          # nativeLB: true # [11]
