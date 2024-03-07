@@ -1,0 +1,20 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kube-prometheus-stack
+  namespace: observability
+spec:
+  entryPoints: # [1]
+    - web
+  routes: # [2]
+    - kind: Rule
+      match: Host(`localhost`) && PathPrefix(`/argocd`) # [3]
+      priority: 10 # [4]
+      services: # [8]
+        - kind: Service
+          name: kube-prometheus-stack-prometheus
+          namespace: observability
+          passHostHeader: true
+          port: 9090 # [9]
+          scheme: http
+          weight: 10
