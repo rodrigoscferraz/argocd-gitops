@@ -15,7 +15,7 @@ spec:
           name: dbeaver
           namespace: dbeaver
           passHostHeader: true
-          port: client # [9]
+          port: 8978 # [9]
           scheme: http
           strategy: RoundRobin
           weight: 10
