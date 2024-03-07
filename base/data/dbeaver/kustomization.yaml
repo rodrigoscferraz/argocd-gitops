@@ -6,3 +6,34 @@ resources:
   - service.yaml
   - statefulset.yaml
   - ns.yaml
+
+configMapGenerator:
+  #DBEAVER
+  - name: dbeaver-product-configmap
+    files:
+      - configs/product.conf
+
+  - name: dbeaver-sources-user-configmap
+    files:
+      - configs/data-sources.json
+
+  - name: dbeaver-sources-global-configmap
+    files:
+      - configs/data-sources.json
+
+  - name: dbeaver-server-configmap
+    files:
+      - configs/cloudbeaver.conf
+  # #POSTGRES
+  # - name: postgres-configmap
+  #   literals:
+  #     - POSTGRES_USER=my-db-user
+  #     - POSTGRES_PASSWORD=Password123
+  #     - POSTGRES_DB=my-postgre-db
+  # #MYSQL
+  # - name: mysql-configmap
+  #   literals:
+  #     - MYSQL_ROOT_PASSWORD=PasswordROOT
+  #     - MYSQL_USER=my-db-user
+  #     - MYSQL_PASSWORD=Password123
+  #     - MYSQL_DATABASE=my-mysql-db

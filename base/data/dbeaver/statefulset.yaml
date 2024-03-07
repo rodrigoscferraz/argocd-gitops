@@ -30,9 +30,34 @@ spec:
             limits:
               memory: 512M
               cpu: 0.2
-          volumeMounts:
-            - name: dbeaver-volume
-              mountPath: /opt/cloudbeaver/workspace
           ports:
             - containerPort: 8978
               name: client
+          volumeMounts:
+            - name: dbeaver-volume
+              mountPath: /opt/cloudbeaver/workspace
+            - name: dbeaver-product
+              mountPath: /opt/cloudbeaver/conf/product.conf
+              subPath: product.conf
+            - name: dbeaver-sources-user
+              mountPath: /opt/cloudbeaver/workspace/user-projects/admin.dbeaver/.dbeaver/data-sources.json
+              subPath: data-sources.json
+            - name: dbeaver-sources-global
+              mountPath: /opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources.json
+              subPath: data-sources.json
+            - name: dbeaver-server
+              mountPath: /opt/cloudbeaver/conf/cloudbeaver.conf
+              subPath: cloudbeaver.conf
+      volumes:
+        - name: dbeaver-product
+          configMap:
+            name: dbeaver-product-configmap
+        - name: dbeaver-sources-user
+          configMap:
+            name: dbeaver-sources-user-configmap
+        - name: dbeaver-sources-global
+          configMap:
+            name: dbeaver-sources-global-configmap
+        - name: dbeaver-server
+          configMap:
+            name: dbeaver-server-configmap
