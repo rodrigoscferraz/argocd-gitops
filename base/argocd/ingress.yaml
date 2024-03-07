@@ -10,25 +10,11 @@ spec:
     - kind: Rule
       match: Host(`localhost`) && PathPrefix(`/argocd`) # [3]
       priority: 10 # [4]
-      # middlewares: # [5]
-      #   - name: argocd-stripprefix # [6]
-      #     namespace: argocd # [7]
       services: # [8]
         - kind: Service
           name: argocd-server
           namespace: argocd
           passHostHeader: true
           port: 80 # [9]
-          responseForwarding:
-            flushInterval: 1ms
           scheme: http
-          # serversTransport: transport # [10]
-          # sticky:
-          #   cookie:
-          #     httpOnly: true
-          #     name: cookie
-          #     secure: true
-          #     sameSite: none
-          # strategy: RoundRobin
-          # weight: 10
-          # nativeLB: true # [11]
+          weight: 10

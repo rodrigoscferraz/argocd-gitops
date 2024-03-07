@@ -10,9 +10,6 @@ spec:
     - kind: Rule
       match: Host(`localhost`) && PathPrefix(`/dbeaver`) # [3]
       priority: 10 # [4]
-      middlewares: # [5]
-        - name: dbeaver-stripprefix # [6]
-          namespace: dbeaver # [7]
       services: # [8]
         - kind: Service
           name: dbeaver
@@ -22,4 +19,3 @@ spec:
           scheme: http
           strategy: RoundRobin
           weight: 10
-          # nativeLB: true # [11]
