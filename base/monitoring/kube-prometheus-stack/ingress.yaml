@@ -15,6 +15,6 @@ spec:
           name: kube-prometheus-stack-prometheus
           namespace: observability
           passHostHeader: true
-          port: 9090 # [9]
+          port: http-web # [9]
           scheme: http
           weight: 10
