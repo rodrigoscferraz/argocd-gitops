@@ -14,7 +14,7 @@ spec:
         - kind: Service
           name: kube-prometheus-stack-prometheus
           namespace: observability
-          passHostHeader: true
+          passHostHeader: false
           port: http-web # [9]
           scheme: http
           weight: 10
