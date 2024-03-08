@@ -9,12 +9,12 @@ spec:
   routes: # [2]
     - kind: Rule
       match: Host(`localhost`) && PathPrefix(`/prometheus`) # [3]
-      priority: 10 # [4]
+      # priority: 10 # [4]
       services: # [8]
         - kind: Service
           name: kube-prometheus-stack-prometheus
           namespace: observability
-          passHostHeader: false
+          passHostHeader: true
           port: http-web # [9]
           scheme: http
           weight: 10
