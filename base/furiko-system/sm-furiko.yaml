@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    prometheus.io/scrap-with: kube-prometheus-stack
+name: furiko
+  namespace: furiko-system
+spec:
+  endpoints:
+    - honorLabels: true
+      interval: 30s
+      path: /metrics
+      targetPort: metrics
+  jobLabel: furiko
+  namespaceSelector:
+    matchNames:
+      - furiko-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: furiko-furiko
+      app.kubernetes.io/name: furiko

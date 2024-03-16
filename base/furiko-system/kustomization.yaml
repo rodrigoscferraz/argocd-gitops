@@ -1,3 +1,4 @@
 namespace: furiko-system
 resources:
   - manifest.yaml
+  - sm-furiko.yaml
