@@ -1856,10 +1856,10 @@ metadata:
   namespace: furiko-system
 spec:
   ports:
-    - name: https
-      port: 8443
+    - name: http
+      port: 8444
       protocol: TCP
-      targetPort: https
+      targetPort: 8080
   selector:
     app: execution-webhook
     app.kubernetes.io/name: furiko
@@ -1873,9 +1873,9 @@ metadata:
   namespace: furiko-system
 spec:
   ports:
-    - port: 443
+    - port: 8445
       protocol: TCP
-      targetPort: 9443
+      targetPort: 8080
   selector:
     app: execution-webhook
     app.kubernetes.io/name: furiko
