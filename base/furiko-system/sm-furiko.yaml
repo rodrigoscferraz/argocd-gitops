@@ -3,7 +3,7 @@ kind: ServiceMonitor
 metadata:
   labels:
     prometheus.io/scrap-with: kube-prometheus-stack
-name: furiko
+  name: furiko
   namespace: furiko-system
 spec:
   endpoints:
