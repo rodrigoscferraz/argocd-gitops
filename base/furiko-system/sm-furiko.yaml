@@ -17,5 +17,5 @@ spec:
       - furiko-system
   selector:
     matchLabels:
-      app.kubernetes.io/instance: furiko-furiko
       app.kubernetes.io/name: furiko
+      app: execution-webhook
